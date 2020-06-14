@@ -1,0 +1,60 @@
+aim -- setta flag, prossimo bang fa 2 danni
+backfire -- un bang di ritorno
+bandidos -- se 0 carte in mano -> danno , else -> scarta fino a 2 carte oppure risolvi
+bang -- passa a target, il quale va in gamestate difesa, se non puo' difendersi prende un danno
+bangcard -- se flag=0 -> bang a target, setta flag=1
+barrel -- clicca quando ricevi bang, estrai, se cuori -> missed
+beer -- se ultimo giro -> guadagni una pepita, else -> scegli heal o pepita
+     -- giocabile come ultima chance se morente
+bottle -- scegli tra:
+    -- Bang:  target = reachable, effect = bang
+    -- Panico: target = distance, effect = steal, distance = 1
+    -- Birra: target = self, effect = heal
+calumet -- target e' immune alle carte di quadri
+goldrush -- cura tutti gli hp, gioca un altro turno
+gunbelt -- maxcards = 8
+bounty -- dopo risolvi, se target di bangcard chi spara pesca una carta
+fanning -- timeout brown, scegli newtarget a distanza 1 da target, timeout brown, bang a newtarget
+bomb -- estrai, se cuori o quadri scegli target e passa, else -> cubetti-=2, se scartata prendi 2 danni
+discard -- scarta da target una carta da mano o da terra
+draw -- pesca una carta
+changewws -- cambia l'espansione wws
+duel -- target sceglie bang -> inverti target, o risolvi -> prende 1 danno
+dynamite -- estrai, se 2-9 picche -> prendi 3 danni, else -> passa a sinistra
+flight -- giocabile durante timeout brown per annullare carta brown se non e' bang
+generalstore -- prende N carte in un mazzetto, loop: scegli dal mazzetto, passa
+ghost -- setta flag ghost finche' c'e', pesca 2 carte e gioca, se scartata scarta tutto
+heal -- cura target di 1
+horseshoe -- le estrazioni pescano 2 carte
+indians -- target sceglie bang -> scarta, o risolvi -> prende 1 danno
+jail -- estrai, se non cuori passa, infine scarta
+lastcall -- se ultimo giro -> heal
+lemat -- giocatore clicca, poi sceglie carta da scartare e fa bangcard
+missed -- annulla bang
+mustang -- aggiunge 1 al calcolo delle distanze
+pardner -- scegli tra:
+    -- Emporio: effect = generalstore
+    -- Duello: effect = duel, target = any
+    -- Cat Balou: effect = discard, target = any
+poker -- gli altri scartano una carta in un mazzetto, se non c'e' un asso, scegli due carte dal mazzetto, scarta le altre
+reload -- prendi 3 cubetti, scegli per ogni cubetto pescato dove equipaggiarlo
+rust -- prendi 1 cubetto da ogni carta degli altri, vanno sul personaggio
+saved -- giocabile durante timeout risolvi, target non perde vite, tu scegli se pescare 2 carte dal mazzo o da target
+squaw -- scarta da target una carta da mano o da terra, la salva su variabile temporanea
+squawkeep -- pesca la carta temporanea
+steal -- pesca da target una carta da mano o da terra
+tornado -- tutti scelgono 1 carta da scartare, pescano 2 carte
+whip -- scarta da target una carta da terra
+bandolier -- setta flag bangcard=0
+belltower -- tutti i target diventano any per la prossima carta
+bigfifty -- target non puo' giocare carte equipaggiate per un bang
+buntlinespecial -- se target fa missed sceglie una carta da scartare
+bush -- giocabile durante timeout estrazione, ripete l'estrazione
+flintlock -- aggiungi un flintlock alla mano
+lockpick -- pesca una carta dalla mano da target
+thunderer -- aggiungi un bang alla mano
+
+nota -- esistono 3 timeout:
+ timeout brown dopo aver giocato qualsiasi carta brown non bang
+ timeout estrazione dopo qualsiasi estrazione
+ timeout risolvi dopo il click su risolvi

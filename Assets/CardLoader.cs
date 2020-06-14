@@ -7,6 +7,8 @@ class CardItem {
     public string name;
     public string image;
     public string expansion;
+
+    public bool disabled;
 }
 
 [Serializable]
@@ -60,26 +62,30 @@ public class CardLoader
         RootObject obj = JsonUtility.FromJson<RootObject>(Resources.Load<TextAsset>("bang_cards").ToString());
 
         foreach (BangCardItem item in obj.cards) {
-            foreach (string sign in item.signs) {
-                BangCard card = new BangCard();
-                card.name = item.name;
-                card.expansion = item.expansion;
-                card.loadTexture("cards/" + item.image);
-                card.sign = sign;
-                card.color = item.color;
-                card.type = item.type;
-                card.cube_cost = item.cube_cost;
-                deckBang.Add(card);
+            if (!item.disabled) {
+                foreach (string sign in item.signs) {
+                    BangCard card = new BangCard();
+                    card.name = item.name;
+                    card.expansion = item.expansion;
+                    card.loadTexture("cards/" + item.image);
+                    card.sign = sign;
+                    card.color = item.color;
+                    card.type = item.type;
+                    card.cube_cost = item.cube_cost;
+                    deckBang.Add(card);
+                }
             }
         }
 
         foreach (CharacterCardItem item in obj.characters) {
-            CharacterCard card = new CharacterCard();
-            card.name = item.name;
-            card.expansion = item.expansion;
-            card.loadTexture("characters/" + item.image);
-            card.hp = item.hp;
-            deckCharacters.Add(card);
+            if (!item.disabled) {
+                CharacterCard card = new CharacterCard();
+                card.name = item.name;
+                card.expansion = item.expansion;
+                card.loadTexture("characters/" + item.image);
+                card.hp = item.hp;
+                deckCharacters.Add(card);
+            }
         }
 
         foreach (CardItem item in obj.roles) {
@@ -90,42 +96,50 @@ public class CardLoader
         }
 
         foreach (ExpansionCardItem item in obj.fistfulofcards) {
-            ExpansionCard card = new ExpansionCard();
-            card.name = item.name;
-            card.expansion = "fistfulofcards";
-            card.loadTexture("fistfulofcards/" + item.image);
-            card.last_card = item.last_card;
-            deckFistfulofcards.Add(card);
+            if (!item.disabled) {
+                ExpansionCard card = new ExpansionCard();
+                card.name = item.name;
+                card.expansion = "fistfulofcards";
+                card.loadTexture("fistfulofcards/" + item.image);
+                card.last_card = item.last_card;
+                deckFistfulofcards.Add(card);
+            }
         }
 
         foreach (ExpansionCardItem item in obj.highnoon) {
-            ExpansionCard card = new ExpansionCard();
-            card.name = item.name;
-            card.expansion = "highnoon";
-            card.loadTexture("highnoon/" + item.image);
-            card.last_card = item.last_card;
-            deckHighnoon.Add(card);
+            if (!item.disabled) {
+                ExpansionCard card = new ExpansionCard();
+                card.name = item.name;
+                card.expansion = "highnoon";
+                card.loadTexture("highnoon/" + item.image);
+                card.last_card = item.last_card;
+                deckHighnoon.Add(card);
+            }
         }
 
         foreach (ExpansionCardItem item in obj.wildwestshow) {
-            ExpansionCard card = new ExpansionCard();
-            card.name = item.name;
-            card.expansion = "wildwestshow";
-            card.loadTexture("wildwestshow/" + item.image);
-            card.last_card = item.last_card;
-            deckWildwestshow.Add(card);
+            if (!item.disabled) {
+                ExpansionCard card = new ExpansionCard();
+                card.name = item.name;
+                card.expansion = "wildwestshow";
+                card.loadTexture("wildwestshow/" + item.image);
+                card.last_card = item.last_card;
+                deckWildwestshow.Add(card);
+            }
         }
 
         foreach (GoldrushCardItem item in obj.goldrush) {
-            GoldrushCard card = new GoldrushCard();
-            card.name = item.name;
-            card.expansion = "goldrush";
-            card.loadTexture("goldrush/" + item.image);
-            card.color = item.color;
-            card.type = item.type;
-            card.gold_cost = item.gold_cost;
-            for (int i=0; i<item.count; ++i) {
-                deckGoldrush.Add(card);
+            if (!item.disabled) {
+                GoldrushCard card = new GoldrushCard();
+                card.name = item.name;
+                card.expansion = "goldrush";
+                card.loadTexture("goldrush/" + item.image);
+                card.color = item.color;
+                card.type = item.type;
+                card.gold_cost = item.gold_cost;
+                for (int i=0; i<item.count; ++i) {
+                    deckGoldrush.Add(card);
+                }
             }
         }
     }
