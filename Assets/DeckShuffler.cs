@@ -24,7 +24,7 @@ public class DeckShuffler : MonoBehaviour
     {
         CardLoader.loadCards();
 
-        shuffledCards = new List<Card>(CardLoader.deckCharacters);
+        shuffledCards = new List<Card>(CardLoader.deckBang);
         Shuffle(shuffledCards);
 
         sprite = gameObject.GetComponent<CardSprite>();

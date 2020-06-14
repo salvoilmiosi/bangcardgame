@@ -42,23 +42,29 @@ public class CardSprite : MonoBehaviour {
         get { return _card; }
         set {
             _card = value;
-            if (cardRenderer == null) return;
-            if (value == null) return;
-
-            cardRenderer.sprite = _card.sprite;
-            if (typeof(BangCard).IsInstanceOfType(_card)) {
-                string sign = ((BangCard)_card).sign;
-                char suit = sign[sign.Length - 1];
-                string num = sign.Substring(0, sign.Length - 1);
-
-                numRenderer.sprite = SignSprites.getNum(num);
-                suitRenderer.sprite = SignSprites.getSuit(suit);
-            } else {
+            if (value == null || cardFlipped) {
+                cardRenderer.sprite = backfaceSprite;
                 numRenderer.sprite = null;
                 suitRenderer.sprite = null;
+            } else {
+                cardRenderer.sprite = _card.sprite;
+                if (typeof(BangCard).IsInstanceOfType(_card)) {
+                    string sign = ((BangCard)_card).sign;
+                    char suit = sign[sign.Length - 1];
+                    string num = sign.Substring(0, sign.Length - 1);
+
+                    numRenderer.sprite = SignSprites.getNum(num);
+                    suitRenderer.sprite = SignSprites.getSuit(suit);
+                } else {
+                    numRenderer.sprite = null;
+                    suitRenderer.sprite = null;
+                }
             }
         }
     }
+
+    public bool cardFlipped;
+    public Sprite backfaceSprite;
 
     public SpriteRenderer cardRenderer;
     public SpriteRenderer numRenderer;
