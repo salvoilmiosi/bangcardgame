@@ -42,13 +42,11 @@ pardner -- scegli tra:
     -- Duello: effect = duel, target = any
     -- Cat Balou: effect = discard, target = any
 poker -- gli altri scartano una carta in un mazzetto, se non c'e' un asso, scegli due carte dal mazzetto, scarta le altre
-pickaxe -- vedi fase 1
-reload -- prendi 3 cubetti, scegli per ogni cubetto pescato dove equipaggiarlo
+reload -- prendi 3 cubetti
 ricochet -- scarta da target una carta da terra, puo' essere annullato con mancato
 rum -- estrai 4 carte, conta i semi diversi, heal self n volte
 rucksack -- paga 2 pepite -> heal
 rust -- prendi 1 cubetto da ogni carta degli altri, vanno sul personaggio
-scope -- diminuisce di 1 il calcolo delle distanze da te agli altri
 squaw -- pesca la carta temporanea
 steal -- pesca da target una carta da mano o da terra
 tornado -- tutti scelgono 1 carta da scartare, pescano 2 carte
@@ -69,10 +67,6 @@ bush -- durante timeout estrazione, ripete l'estrazione
 nota -- timeout:
     estrazione dopo qualsiasi estrazione
     risolvi dal momento che spunta il pulsante risolvi fino a x secondi dopo il click
-
-type:
-equip -- carta equipaggiabile su equip_target, self di default
-weapon -- arma, equipaggiare questa carta scarta arma gia' equipaggiata
 
 target:
 any -- qualsiasi giocatore
@@ -97,15 +91,14 @@ inizio del turno:
         cambia espansione:
 
         the daltons: tutti scartano una carta blue a scelta loro
-        the doctor: per ogni giocatore: se hp=min(hp) hp++
+        the doctor: per ogni giocatore: se hp=min(hp) heal
         sniper: click su carta -> scegli due carte bang da scartare -> setta flag sniper -> (effect=bang, target=reachable)
-        blood brothers: click su carta -> hp-- -> scegli un target -> target.heal
+        blood brothers: se hp>1 -> click su carta -> hp--, (effect=heal, target=any)
         ricochet: click su carta -> scegli carta bang da scartare -> (effect=ricochet, target=others)
-        russianroulette: per ogni giocatore dallo sceriffo: sceglie effetto missed da scartare, passa o risolvi -> prende due danni e il loop si ferma
-
+        russianroulette: per ogni giocatore a partire dallo sceriffo: sceglie effetto missed da scartare, passa o risolvi -> prende due danni e il loop si ferma
     
     modificatori espansione:
-        mezzogiorno di fuoco: hp--
+        mezzogiorno di fuoco: 1 danno
         fistfulofcards: (effect=bang, target=self) x numcards
 
         sbornia : disattiva i personaggi
@@ -185,6 +178,9 @@ fase 2:
             se type=weapon -> per ogni carta -> se type=weapon, scarta questa carta
             metti 3 cubetti su questa carta
 
+    per ogni carta equipaggiata:
+        se johnny kisch : scarta le altre carte con lo stesso nome
+
     per ogni carta cliccata da terra:
         green:
             se non tappata -> (effect, target, distance)
@@ -206,7 +202,6 @@ fase 2:
         al preacher: se giocata carta blue o orange -> click sul personaggio -> paga due pepite, draw 
     modificatori personaggio:
         sid ketchum : click sul personaggio -> sceglie due carte da scartare -> (effect=heal, target=self)
-        johnny kisch : per ogni equip scarta le altre carte con lo stesso nome
         uncle will : click sul personaggio -> sceglie carta da scartare -> generalstore
         chuck wengam : click sul personaggio -> perde una vita -> draw draw
         doc holyday : click sul personaggio -> sceglie due carte da scartare -> (effect=bang, target=reachable)
@@ -273,7 +268,7 @@ fase danno:
     if not unavoidable:
         modificatori personaggio per target:
             se big spencer: disattive missedcard
-            se calamity janet: puo' scartare anche carta bang
+            se calamity janet: puo' scartare anche bangcard
             se elena fuente: puo' scartare qualsiasi carta
             jourdonnais: click sul personaggio -> estrai, se cuori -> missed
         se belle star o bigfifty: disattiva carte equipaggiate
@@ -303,7 +298,7 @@ fase danno:
             se luckycharm: pesca una pepita
         attacker pesca una pepita x ogni danno
 
--- molly stark: qualsiasi carta giocata fuori turno aggiunge draw
+-- molly stark: qualsiasi carta giocata fuori turno -> draw
 
 funzione check_sign:
     modificatori espansione:
