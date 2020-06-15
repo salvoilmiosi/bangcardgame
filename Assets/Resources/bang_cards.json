@@ -260,7 +260,7 @@
             "image": "01_mancato",
             "expansion": "base",
             "color": "brown",
-            "effect": "missed"
+            "effect": "missedcard"
         },
         {
             "name": "Panico!",
@@ -441,7 +441,7 @@
             "image": "03_mancato",
             "expansion": "dodgecity",
             "color": "brown",
-            "effect": "missed"
+            "effect": "missedcard"
         },
         {
             "name": "Panico!",
@@ -946,7 +946,7 @@
             "image": "17_mancato",
             "expansion": "armedanddangerous",
             "color": "brown",
-            "effect": "missed"
+            "effect": "missedcard"
         },
         {
             "name": "Ricarica",
@@ -1635,11 +1635,13 @@
         },
         {
             "name": "Il Giudice",
-            "image": "05_ilgiudice"
+            "image": "05_ilgiudice",
+            "disabled": 1
         },
         {
             "name": "Lazo",
-            "image": "05_lazo"
+            "image": "05_lazo",
+            "disabled": 1
         },
         {
             "name": "Legge del West",
@@ -1695,7 +1697,8 @@
         },
         {
             "name": "Dorothy Rage",
-            "image": "06_dorothyrage"
+            "image": "06_dorothyrage",
+            "disabled": 1
         },
         {
             "name": "Helena Zontero",
