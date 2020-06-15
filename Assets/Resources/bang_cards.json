@@ -260,8 +260,7 @@
             "image": "01_mancato",
             "expansion": "base",
             "color": "brown",
-            "effect": "missed",
-            "type": "offturn"
+            "effect": "missed"
         },
         {
             "name": "Panico!",
@@ -442,8 +441,7 @@
             "image": "03_mancato",
             "expansion": "dodgecity",
             "color": "brown",
-            "effect": "missed",
-            "type": "offturn"
+            "effect": "missed"
         },
         {
             "name": "Panico!",
@@ -454,8 +452,7 @@
             "expansion": "dodgecity",
             "color": "brown",
             "target": "distance",
-            "effect": "steal",
-            "type": "offturn"
+            "effect": "steal"
         },
         {
             "name": "Pugno",
@@ -500,8 +497,7 @@
             "image": "03_schivata",
             "expansion": "dodgecity",
             "color": "brown",
-            "effect": "missed draw",
-            "type": "offturn"
+            "effect": "dodge"
         },
         {
             "name": "Springfield",
@@ -544,8 +540,7 @@
             "image": "03_bibbia",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed draw",
-            "type": "offturn"
+            "effect": "missed draw"
         },
         {
             "name": "Borraccia",
@@ -576,8 +571,7 @@
             "image": "03_cappello",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed",
-            "type": "offturn"
+            "effect": "missed"
         },
         {
             "name": "Conestoga",
@@ -644,8 +638,7 @@
             "image": "03_placca_di_ferro",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed",
-            "type": "offturn"
+            "effect": "missed"
         },
         {
             "name": "Pony Express",
@@ -677,8 +670,7 @@
             "image": "03_sombrero",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed",
-            "type": "offturn"
+            "effect": "missed"
         },
         {
             "name": "Fantasma",
@@ -759,8 +751,7 @@
             "image": "07_fuga",
             "expansion": "valleyofshadows",
             "color": "brown",
-            "effect": "flight",
-            "type": "offturn"
+            "effect": "flight"
         },
         {
             "name": "Mira",
@@ -790,8 +781,7 @@
             "image": "07_ritornodifiamma",
             "expansion": "valleyofshadows",
             "color": "brown",
-            "effect": "missed backfire",
-            "type": "offturn"
+            "effect": "backfire"
         },
         {
             "name": "Salvo!",
@@ -801,8 +791,7 @@
             "image": "07_salvo",
             "expansion": "valleyofshadows",
             "color": "brown",
-            "effect": "saved",
-            "type": "offturn"
+            "effect": "saved"
         },
         {
             "name": "Sventagliata",
@@ -907,7 +896,8 @@
             "cube_cost": 1,
             "target": "reachable",
             "effect": "bang",
-            "cube_effect": "bang"
+            "cube_effect": "bang",
+            "cube_target": "reachable"
         },
         {
             "name": "Flintlock",
@@ -933,7 +923,8 @@
             "cube_cost": 1,
             "target": "notself",
             "effect": "indians",
-            "cube_effect": "indians"
+            "cube_effect": "indians",
+            "cube_target": "notself"
         },
         {
             "name": "Gi\u00f9 la Testa!",
@@ -945,8 +936,7 @@
             "color": "brown",
             "cube_cost": 2,
             "effect": "missed",
-            "cube_effect": "duck",
-            "type": "offturn"
+            "cube_effect": "duck"
         },
         {
             "name": "Mancato!",
@@ -956,8 +946,7 @@
             "image": "17_mancato",
             "expansion": "armedanddangerous",
             "color": "brown",
-            "effect": "missed",
-            "type": "offturn"
+            "effect": "missed"
         },
         {
             "name": "Ricarica",

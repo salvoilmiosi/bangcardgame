@@ -1,9 +1,12 @@
+EFFETTI ATTIVI:
+
 aim -- setta flag, prossimo bang fa 2 danni
-backfire -- (effect=bang, target=attacker)
 bandidos -- se 0 carte in mano -> danno , else -> scarta fino a 2 carte oppure risolvi
 bang -- passa a target, il quale va in gamestate difesa, se non puo' difendersi prende un danno
 bangcard -- se flag=0 o volcanic o willy the kid -> bang a target, setta flag=1
-barrel -- giocabile se target di bang, estrai, se cuori -> missed
+    -- modificatori personaggio:
+        se colorado bill: estrae, se picche -> setta flag unavoidable
+    -- se doublebarrel e sign=quadri -> setta flag unavoidable
 beer -- se ultimo giro -> guadagni una pepita, else -> scegli heal o pepita
     -- modificatori personaggio:
         se tequila joe: heal
@@ -17,23 +20,17 @@ bottle -- scegli tra:
 goldrush -- cura tutti gli hp, gioca un altro turno
 goldpan -- a inizio turno: n=2 -- utilizzo: se n>0 -> n--, paga 1 pepita, draw
 fanning -- bangcard, scegli newtarget a distanza 1 da target, bang a newtarget
-bomb -- estrai, se cuori o quadri scegli target e passa, else -> cubetti-=2, se scartata prendi 2 danni
 discard -- scegli una carta dalla propria mano da scartare
 delete -- scarta da target una carta da mano o da terra, la salva su variabile temporanea
 draw -- target (default=self) pesca una carta
 changewws -- cambia l'espansione wws
 duel -- target sceglie bang -> inverti target, o risolvi -> prende 1 danno
-dynamite -- estrai, se 2-9 picche -> prendi 3 danni, else -> passa a sinistra
 flight -- giocabile se target di carta brown per annullarla se non e' bang
 generalstore -- prende N carte in un mazzetto, loop: scegli dal mazzetto, passa
-ghost -- setta flag ghost finche' c'e', pesca 2 carte e gioca, se scartata scarta tutto
 heal -- cura target di 1
 indians -- target sceglie bang -> scarta, o risolvi -> prende 1 danno
-jail -- estrai, se non cuori passa, infine scarta
 lastcall -- se numgiocatori=2 -> heal
-lemat -- giocatore clicca, poi sceglie carta da scartare e fa (effect=bangcard, target=reachable)
-luckycharm -- dopo risolvi prendi 1 pepita
-missed -- giocabile se target di bang, annulla bang
+lemat -- scegli carta da scartare -> (effect=bangcard, target=reachable)
 pardner -- scegli tra:
     -- Emporio: effect = generalstore
     -- Duello: effect = duel, target = any
@@ -51,15 +48,11 @@ steal -- pesca da target una carta da mano o da terra
 tornado -- tutti scelgono 1 carta da scartare, pescano 2 carte
 whip -- scarta da target una carta da terra
 bandolier -- se bandolier=0 -> flag bangcard=0, bandolier=1
-belltower -- tutti i target diventano any per la prossima carta
-bigfifty -- target non puo' giocare carte equipaggiate per un bang
-buntlinespecial -- se target fa missed sceglie una carta da scartare
+belltower -- setta flag belltower
 bush -- giocabile durante timeout estrazione, ripete l'estrazione
-doublebarrel -- se bang e' di quadri setta flag unavoidable
-flintlock -- aggiungi un flintlock alla mano
+doublebarrel -- setta flag doublebarrel
+flintlock -- setta flag flintlock
 lockpick -- pesca una carta dalla mano da target
-thunderer -- aggiungi un bang alla mano
-wanted -- alla morte, chi ti ha ucciso pesca 2 carte e 1 pepita
 
 nota -- timeout:
     estrazione dopo qualsiasi estrazione
@@ -84,6 +77,14 @@ self -- se' stessi
 -- red ringo inizia con 4 cubetti
 
 inizio del turno:
+    se fantasma o vivo o hai fantasma tra le carte equipaggiate gioca, else passa
+
+    per ogni carta equipaggiata:
+        se jail: estrai, se non cuori passa, infine scarta
+        se dynamite: estrai, se 2-9 picche -> prendi 3 danni, else -> passa a sinistra
+        se bomb: estrai, se cuori o quadri scegli target e passa, else -> cubetti-=2, se scartata prendi 2 danni
+        se snake: estrai, se picche prendi 1 danno
+
     modificatori personaggio:
         vera custer : click sul personaggio -> sceglie target -> acquisisce l'effetto del personaggio di target
         greygory deck : click sul personaggio -> aquisisce l'effetto di due personaggi a caso dal mazzetto base
@@ -112,9 +113,44 @@ fase 1:
             evelyn shebang : clicca su pesca finche' non fa click sul personaggio e gioca (effect=bang, target=reachable) x ogni carta non pescata
             tuco franziskaner : controlla carte equipaggiate, se non ce n'e' di blu cardstodraw+=2
 fase 2:
-    si evidenziano nelle mani le carte con offturn=0 e quelle verdi
+    per ogni carta cliccata dalla mano:
+        brown:
+            se cube_cost > 0:
+                se multiple -> scegli cube_cost x n cubetti -> premi ok -> (effect, target, distance), n x (cube_effect, cube_target)
+                else -> scegli cube_cost cubetti -> premi ok -> (effect, target, distance), (cube_effect, cube_target)
+                se zero cubetti -> (effect, target, distance)
+        green:
+            equipaggia la carta tappata
+        blue:
+            prendi un cubetto
+            se type=equip -> equipaggia la carta su eqip_target (default=self)
+            se type=weapon -> per ogni carta -> se type=weapon, scarta questa carta
+        orange:
+            se type=equip -> equipaggia la carta su eqip_target (default=self)
+            se type=weapon -> per ogni carta -> se type=weapon, scarta questa carta
+            metti 3 cubetti su questa carta
+
+    per ogni carta cliccata da terra:
+        green:
+            se non tappata -> (effect, target, distance)
+        blue, black:
+            attiva effetto attivo
+        orange:
+            scarta cube_cost cubetti dalla carta -> (cube_effect, cube_target, cube_distance)
+    
+    per ogni carta cliccata dallo shop:
+        brown:
+            paga gold_gost pepite -> (effect, target, distance)
+        black:
+            paga gold_gost pepite -> se type=equip -> equipaggia la carta su eqip_target (default=self)
+    
+    per ogni carta black cliccata da terra:
+        paga gold_gost + 1 pepite -> scarta questa carta
+
+    per ogni giocatore:
+        al preacher: se giocata carta blue o orange -> click sul personaggio -> paga due pepite, draw 
     modificatori personaggio:
-        calamity janet : "Mancato" diventa (effect=bangcard, target=reachable) attivo
+        calamity janet : "Mancato!" diventa (effect=bangcard, target=reachable) attivo
         sid ketchum : click sul personaggio -> sceglie due carte da scartare -> (effect=heal, target=self)
         johnny kisch : per ogni equip scarta le altre carte con lo stesso nome
         uncle will : click sul personaggio -> sceglie carta da scartare -> generalstore
@@ -133,9 +169,6 @@ fase 2:
         frankie canton: click sul personaggio -> scegli carta target -> prendi un cubetto da quella carta
         mexicali kid: click sul personaggio -> paga due cubetti -> (effect=bang, target=reachable)
         red ringo: (x2) click sul personaggio -> paga un cubetto dal personaggio -> carica un cubetto
-
-    per ogni giocatore:
-        -- al preacher: click sul personaggio -> paga due pepite, draw 
         
 fase 3:
     maxcards=hp
@@ -153,12 +186,14 @@ fine del turno:
         don bell: estrai, se cuori o quadri, torna a inizio turno
     modificatori espansione:
         se vendetta: estrai, se cuori, torna a inizio turno
+    stappa ogni carta equipaggiata verde
 
 -- suzy lafayette : quando e' a zero carte -> draw
 -- henry block : quando gli si scarta una carta -> (effect=bang, target=attacker)
--- mick defender : "Mancato" diventa anche flight
+-- mick defender : "Mancato!" diventa anche flight
 
 funzione distanza (attacker, target)
+    se belltower return 1
     count = numero di posti tra i due giocatori
     se attacker != belle star:
         controlla carte equipaggiate di target:
@@ -167,34 +202,45 @@ funzione distanza (attacker, target)
     controlla carte equipaggiate di attacker:
         per ogni effect=scope -> count--
     se attacker=rose doolan -> count--
+    return count
 
 -- calumet, apache kid : immune alle carte di quadri
 -- ms abigail : immune alle carte brown J,Q,K,A se unico target
 
 fase risolvi:
-    se attacker e' colorado bill e effect=bangcard:
-        attacker estrae, se picche, unavoidable=1
-    se attacker e' slab the killer e effect=bang:
+    se attacker e' slab the killer:
         scegli due effetti missed
     else if not unavoidable:
-        se target e' big spencer -> scegli un effetto missed non "Mancato"
-        else -> scegli un effetto missed
-
-    modificatori personaggio per attacker:
-        bloody mary: se missed, draw
+        se target e' big spencer -> scegli un effetto missed non "Mancato!"
+        else:
+            se bigfifty -> scegli effect=missed dalla mano
+            else:
+                modificatori personaggio per target:
+                    se calamity janet: puo' scartare anche carta bang
+                    se elena fuente: puo' scartare qualsiasi carta
+                    jourdonnais: click sul personaggio -> estrai, se cuori -> missed
+                scegli tra:
+                    backfire -- missed, (effect=bang, target=attacker)
+                    barrel -- estrai, se cuori -> missed
+                    dodge = missed, draw
     
-    modificatori personaggio per target:
-        bart cassidy : danno + draw
-        calamity janet : bangcard diventa (effect=missed)
-        elena fuente : qualsiasi carta diventa (effect=missed)
-        el gringo : danno + (effect=steal, target=attacker)
-        jourdonnais : click sul personaggio -> barrel
-        simeon picos : pesca una pepita x ogni danno
-        julie cutter : estrai, se cuori o quadri -> (effect=bang, target=attacker)
-    controlla carte equipaggiate:
-        se boots: draw x ogni danno
-        se bounty: (effect=draw, target=attacker) se carta "Bang!"
-    attacker pesca una pepita x ogni danno
+    se missed:
+        se attacker=bloody mary -> (effect=draw, target=attacker)
+        se buntlinespecial -> target sceglie una carta da scartare
+        se flintlock -> target ripesca flintlock
+    else ->
+        controlla carte equipaggiate attacker:
+            se shotgun: target sceglie una carta da scartare
+        modificatori personaggio per target:
+            bart cassidy : danno + draw
+            el gringo : danno + (effect=steal, target=attacker)
+            simeon picos : pesca una pepita x ogni danno
+            julie cutter : estrai, se cuori o quadri -> (effect=bang, target=attacker)
+        controlla carte equipaggiate target:
+            se boots: draw x ogni danno
+            se bounty: (effect=draw, target=attacker) se bangcard
+            se luckycharm: pesca una pepita
+        attacker pesca una pepita x ogni danno
 
 -- molly stark: qualsiasi carta giocata fuori turno aggiunge draw
 
@@ -210,6 +256,9 @@ fase estrazione:
 fase uccisione:
     se player ha abbastanza birre in mano per curarsi le gioca in automatico
     se non morto return
+
+    controlla carte equipaggiate:
+        se wanted: target pesca due carte e una pepita
 
     modificatori personaggio:
         se teren kill : estrai -> se picche muore, else -> draw, return
