@@ -10,7 +10,6 @@
             "expansion": "base",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "barrel"
         },
         {
@@ -22,7 +21,6 @@
             "expansion": "base",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "dynamite"
         },
         {
@@ -34,7 +32,6 @@
             "expansion": "base",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "scope"
         },
         {
@@ -47,7 +44,6 @@
             "expansion": "base",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "mustang"
         },
         {
@@ -61,7 +57,7 @@
             "expansion": "base",
             "color": "blue",
             "type": "equip",
-            "target": "notsheriff",
+            "equip_target": "notsheriff",
             "effect": "jail"
         },
         {
@@ -184,7 +180,7 @@
             "image": "01_catbalou",
             "expansion": "base",
             "color": "brown",
-            "effect": "discard",
+            "effect": "delete",
             "target": "any"
         },
         {
@@ -209,7 +205,7 @@
             "expansion": "base",
             "color": "brown",
             "effect": "duel",
-            "target": "any"
+            "target": "notself"
         },
         {
             "name": "Emporio",
@@ -264,7 +260,8 @@
             "image": "01_mancato",
             "expansion": "base",
             "color": "brown",
-            "effect": "missed"
+            "effect": "missed",
+            "type": "offturn"
         },
         {
             "name": "Panico!",
@@ -321,7 +318,6 @@
             "expansion": "dodgecity",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "scope"
         },
         {
@@ -333,7 +329,7 @@
             "expansion": "dodgecity",
             "color": "blue",
             "type": "equip",
-            "target": "self",
+            "equip_target": "self",
             "effect": "dynamite"
         },
         {
@@ -345,7 +341,6 @@
             "expansion": "dodgecity",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "mustang"
         },
         {
@@ -379,7 +374,6 @@
             "expansion": "dodgecity",
             "color": "blue",
             "type": "equip",
-            "target": "self",
             "effect": "mustang"
         },
         {
@@ -405,8 +399,8 @@
             "image": "03_birra",
             "expansion": "dodgecity",
             "color": "brown",
-            "target": "self",
-            "effect": "beer"
+            "effect": "beer",
+            "target": "self"
         },
         {
             "name": "Cat Balou",
@@ -417,7 +411,7 @@
             "expansion": "dodgecity",
             "color": "brown",
             "target": "any",
-            "effect": "discard"
+            "effect": "delete"
         },
         {
             "name": "Emporio",
@@ -448,7 +442,8 @@
             "image": "03_mancato",
             "expansion": "dodgecity",
             "color": "brown",
-            "effect": "missed"
+            "effect": "missed",
+            "type": "offturn"
         },
         {
             "name": "Panico!",
@@ -460,7 +455,7 @@
             "color": "brown",
             "target": "distance",
             "effect": "steal",
-            "distance": 1
+            "type": "offturn"
         },
         {
             "name": "Pugno",
@@ -482,9 +477,8 @@
             "image": "03_rag_time",
             "expansion": "dodgecity",
             "color": "brown",
-            "type": "discard",
             "target": "any",
-            "effect": "steal"
+            "effect": "discard steal"
         },
         {
             "name": "Rissa",
@@ -494,9 +488,8 @@
             "image": "03_rissa",
             "expansion": "dodgecity",
             "color": "brown",
-            "type": "discard",
             "target": "others",
-            "effect": "discard"
+            "effect": "discard delete"
         },
         {
             "name": "Schivata",
@@ -507,7 +500,8 @@
             "image": "03_schivata",
             "expansion": "dodgecity",
             "color": "brown",
-            "effect": "missed draw"
+            "effect": "missed draw",
+            "type": "offturn"
         },
         {
             "name": "Springfield",
@@ -517,9 +511,8 @@
             "image": "03_springfield",
             "expansion": "dodgecity",
             "color": "brown",
-            "type": "discard",
-            "target": "any",
-            "effect": "bang"
+            "target": "notself",
+            "effect": "discard bang"
         },
         {
             "name": "Tequila",
@@ -529,9 +522,8 @@
             "image": "03_tequila",
             "expansion": "dodgecity",
             "color": "brown",
-            "type": "discard",
             "target": "any",
-            "effect": "heal"
+            "effect": "discard heal"
         },
         {
             "name": "Whisky",
@@ -541,9 +533,8 @@
             "image": "03_whisky",
             "expansion": "dodgecity",
             "color": "brown",
-            "type": "discard",
             "target": "self",
-            "effect": "heal heal"
+            "effect": "discard heal heal"
         },
         {
             "name": "Bibbia",
@@ -553,7 +544,8 @@
             "image": "03_bibbia",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed draw"
+            "effect": "missed draw",
+            "type": "offturn"
         },
         {
             "name": "Borraccia",
@@ -574,7 +566,7 @@
             "expansion": "dodgecity",
             "color": "green",
             "target": "any",
-            "effect": "discard"
+            "effect": "delete"
         },
         {
             "name": "Cappello",
@@ -584,7 +576,8 @@
             "image": "03_cappello",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed"
+            "effect": "missed",
+            "type": "offturn"
         },
         {
             "name": "Conestoga",
@@ -617,7 +610,7 @@
             "image": "03_fucile_da_caccia",
             "expansion": "dodgecity",
             "color": "green",
-            "target": "any",
+            "target": "notself",
             "effect": "bang"
         },
         {
@@ -651,7 +644,8 @@
             "image": "03_placca_di_ferro",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed"
+            "effect": "missed",
+            "type": "offturn"
         },
         {
             "name": "Pony Express",
@@ -683,7 +677,8 @@
             "image": "03_sombrero",
             "expansion": "dodgecity",
             "color": "green",
-            "effect": "missed"
+            "effect": "missed",
+            "type": "offturn"
         },
         {
             "name": "Fantasma",
@@ -719,7 +714,7 @@
             "expansion": "valleyofshadows",
             "color": "blue",
             "type": "equip",
-            "target": "any",
+            "target": "notself",
             "effect": "snake"
         },
         {
@@ -743,7 +738,7 @@
             "expansion": "valleyofshadows",
             "color": "blue",
             "type": "equip",
-            "target": "any",
+            "target": "notself",
             "effect": "bounty"
         },
         {
@@ -764,7 +759,8 @@
             "image": "07_fuga",
             "expansion": "valleyofshadows",
             "color": "brown",
-            "effect": "flight"
+            "effect": "flight",
+            "type": "offturn"
         },
         {
             "name": "Mira",
@@ -794,7 +790,8 @@
             "image": "07_ritornodifiamma",
             "expansion": "valleyofshadows",
             "color": "brown",
-            "effect": "missed backfire"
+            "effect": "missed backfire",
+            "type": "offturn"
         },
         {
             "name": "Salvo!",
@@ -805,7 +802,7 @@
             "expansion": "valleyofshadows",
             "color": "brown",
             "effect": "saved",
-            "disabled": 1
+            "type": "offturn"
         },
         {
             "name": "Sventagliata",
@@ -816,7 +813,7 @@
             "expansion": "valleyofshadows",
             "color": "brown",
             "target": "reachable",
-            "effect": "bangcard fanning"
+            "effect": "fanning"
         },
         {
             "name": "Tomahawk",
@@ -885,7 +882,7 @@
             "expansion": "armedanddangerous",
             "color": "brown",
             "target": "any",
-            "effect": "discard"
+            "effect": "delete"
         },
         {
             "name": "Cicchetto",
@@ -934,7 +931,7 @@
             "expansion": "armedanddangerous",
             "color": "brown",
             "cube_cost": 1,
-            "target": "any",
+            "target": "notself",
             "effect": "indians",
             "cube_effect": "indians"
         },
@@ -948,7 +945,8 @@
             "color": "brown",
             "cube_cost": 2,
             "effect": "missed",
-            "cube_effect": "duck"
+            "cube_effect": "duck",
+            "type": "offturn"
         },
         {
             "name": "Mancato!",
@@ -958,7 +956,8 @@
             "image": "17_mancato",
             "expansion": "armedanddangerous",
             "color": "brown",
-            "effect": "missed"
+            "effect": "missed",
+            "type": "offturn"
         },
         {
             "name": "Ricarica",
@@ -990,8 +989,8 @@
             "color": "brown",
             "cube_cost": 2,
             "target": "any",
-            "effect": "squaw",
-            "cube_effect": "squawkeep"
+            "effect": "delete",
+            "cube_effect": "squaw"
         },
         {
             "name": "Asso nella Manica",
@@ -1003,7 +1002,7 @@
             "color": "orange",
             "type": "equip",
             "cube_cost": 2,
-            "effect": "draw changewws"
+            "cube_effect": "draw changewws"
         },
         {
             "name": "Bandoliera",
@@ -1039,7 +1038,7 @@
             "expansion": "armedanddangerous",
             "color": "orange",
             "type": "equip",
-            "target": "any",
+            "equip_target": "notself",
             "effect": "bomb"
         },
         {
@@ -1099,7 +1098,7 @@
             "image": "17_doppiacanna",
             "expansion": "armedanddangerous",
             "color": "orange",
-            "type": "equip_weapon",
+            "type": "weapon",
             "cube_cost": 1,
             "distance": 1,
             "cube_effect": "doublebarrel"
@@ -1114,8 +1113,8 @@
             "color": "orange",
             "type": "equip",
             "cube_cost": 3,
-            "target": "any",
-            "effect": "whip"
+            "cube_effect": "whip",
+            "cube_target": "any"
         },
         {
             "name": "Fusto di Birra",
@@ -1127,8 +1126,8 @@
             "color": "orange",
             "type": "equip",
             "cube_cost": 3,
-            "target": "self",
-            "effect": "heal"
+            "cube_effect": "heal",
+            "cube_target": "self"
         },
         {
             "name": "Grimaldello",
@@ -1140,7 +1139,7 @@
             "color": "orange",
             "type": "equip",
             "cube_cost": 3,
-            "target": "any",
+            "cube_target": "notself",
             "cube_effect": "lockpick"
         },
         {
@@ -1802,22 +1801,26 @@
             "image": "04_piccone",
             "color": "black",
             "type": "equip",
-            "gold_cost": 4
+            "gold_cost": 4,
+            "effect": "pickaxe"
         },
         {
             "name": "Ricercato",
             "count": 3,
             "image": "04_ricercato",
             "color": "black",
-            "type": "equip_other",
-            "gold_cost": 2
+            "gold_cost": 2,
+            "type": "equip",
+            "equip_target": "notself",
+            "effect": "wanted"
         },
         {
             "name": "Rum",
             "count": 2,
             "image": "04_rum",
             "color": "brown",
-            "gold_cost": 3
+            "gold_cost": 3,
+            "effect": "rum"
         },
         {
             "name": "Setaccio",
@@ -1825,22 +1828,26 @@
             "image": "04_setaccio",
             "color": "black",
             "type": "equip",
-            "gold_cost": 3
+            "gold_cost": 3,
+            "effect": "goldpan"
         },
         {
             "name": "Stivali",
             "count": 1,
             "image": "04_stivali",
             "color": "black",
+            "gold_cost": 3,
             "type": "equip",
-            "gold_cost": 3
+            "effect": "boots"
         },
         {
             "name": "Talismano",
             "count": 1,
             "image": "04_talismano",
             "color": "black",
-            "gold_cost": 3
+            "gold_cost": 3,
+            "type": "equip",
+            "effect": "luckycharm"
         },
         {
             "name": "Union Pacific",
@@ -1856,7 +1863,8 @@
             "image": "04_zaino",
             "color": "black",
             "type": "equip",
-            "gold_cost": 3
+            "gold_cost": 3,
+            "effect": "rucksack"
         }
     ]
 }
