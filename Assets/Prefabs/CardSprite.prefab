@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8555703842426473456}
   - component: {fileID: 1211885428320060876}
-  - component: {fileID: 962892785045524473}
   m_Layer: 0
-  m_Name: number
+  m_Name: NumberSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,17 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!210 &962892785045524473
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353662690264230817}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
 --- !u!1 &2257105747003987813
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,9 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9215927940042407580}
   - component: {fileID: 3637565272761292948}
-  - component: {fileID: 9199977182093996717}
   m_Layer: 0
-  m_Name: suit
+  m_Name: SuitSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,17 +162,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!210 &9199977182093996717
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2257105747003987813}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
 --- !u!1 &8925156931217376280
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +206,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8925156931217376280}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -261,8 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd9d145860ec78419883f8dcef8503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardFlipped: 0
-  backfaceSprite: {fileID: 0}
+  backfaceSprite: {fileID: 21300000, guid: 22053f6c8c62ee143afa837dee8d278b, type: 3}
   cardRenderer: {fileID: -994782235085210768}
   numRenderer: {fileID: 1211885428320060876}
   suitRenderer: {fileID: 3637565272761292948}

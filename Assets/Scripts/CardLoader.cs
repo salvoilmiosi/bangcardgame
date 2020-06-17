@@ -16,7 +16,13 @@ class BangCardItem : CardItem {
     public string[] signs;
     public string color;
     public string type;
+    public string target;
+    public string equip_target;
+    public int distance;
+    public string effect;
     public int cube_cost;
+    public string cube_effect;
+    public string cube_target;
 }
 
 [Serializable]
@@ -35,6 +41,10 @@ class GoldrushCardItem : CardItem {
     public string type;
     public int gold_cost;
     public int count;
+
+    public string target;
+    public string equip_target;
+    public string effect;
 }
 
 [Serializable]

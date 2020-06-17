@@ -860,7 +860,8 @@
             "color": "brown",
             "cube_cost": 2,
             "effect": "draw draw",
-            "cube_effect": "draw"
+            "cube_effect": "draw",
+            "multiple": 1
         },
         {
             "name": "Cat Balou",
@@ -883,7 +884,8 @@
             "color": "brown",
             "cube_cost": 3,
             "effect": "heal",
-            "cube_effect": "heal"
+            "cube_effect": "heal",
+            "multiple": 1
         },
         {
             "name": "Colpo Rapido",
@@ -897,7 +899,8 @@
             "target": "reachable",
             "effect": "bang",
             "cube_effect": "bang",
-            "cube_target": "reachable"
+            "cube_target": "reachable new",
+            "multiple": 1
         },
         {
             "name": "Flintlock",
@@ -924,7 +927,8 @@
             "target": "notself",
             "effect": "indians",
             "cube_effect": "indians",
-            "cube_target": "notself"
+            "cube_target": "notself new",
+            "multiple": 1
         },
         {
             "name": "Gi\u00f9 la Testa!",
@@ -1635,13 +1639,11 @@
         },
         {
             "name": "Il Giudice",
-            "image": "05_ilgiudice",
-            "disabled": 1
+            "image": "05_ilgiudice"
         },
         {
             "name": "Lazo",
-            "image": "05_lazo",
-            "disabled": 1
+            "image": "05_lazo"
         },
         {
             "name": "Legge del West",

@@ -21,7 +21,7 @@ public class BangDeck : MonoBehaviour
             obj.transform.position = new Vector3(0.0f, 0.0f, z);
             CardSprite cardSprite = obj.GetComponent<CardSprite>();
             cardSprite.card = card;
-            z += 0.015f;
+            z += 0.5f;
         }
     }
 
