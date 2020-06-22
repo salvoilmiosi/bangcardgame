@@ -12,6 +12,8 @@ public class LobbyEntry : MonoBehaviour
 
     public Text playerCount;
 
+    public GameObject joinButton;
+
     public delegate void JoinFunctionDelegate();
 
     public JoinFunctionDelegate OnJoin;

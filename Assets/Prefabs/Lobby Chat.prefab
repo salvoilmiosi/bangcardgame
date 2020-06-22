@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatInputField: {fileID: 5664421001449697412}
   chatContent: {fileID: 5664421000684997485}
+  textPrefab: {fileID: 1239933599748585392, guid: 5146e405a03da95438e0aaaafb3b1f8d,
+    type: 3}
 --- !u!1 &5664421000684997485
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +88,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000050051534}
   m_SizeDelta: {x: 0, y: 125.00116}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6189995371555434852
@@ -109,7 +111,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0

@@ -12,6 +12,8 @@ public class Lobby : MonoBehaviour
     public GameObject lobbyScreen;
     public GameObject playerListScreen;
 
+    public GameObject startGameButton;
+
     public GameObject lobbyList;
     public GameObject playerList;
 
@@ -22,10 +24,14 @@ public class Lobby : MonoBehaviour
     private int totalPages = 0;
     public int lobbyCount = 10;
 
-    private LobbyPlayer playerData;
+    private static LobbyPlayer playerData;
     private LobbyData lobbyData;
 
     private const int MAX_PLAYERS = 10;
+
+    public static LobbyPlayer getPlayerData() {
+        return playerData;
+    }
 
     void Start() {
         playerRegisterScreen.SetActive(true);
@@ -38,7 +44,7 @@ public class Lobby : MonoBehaviour
 
         NetworkClient.Lobby.OnLobbyConnectedEvent += OnLobbyConnected;
 
-        NetworkClient.Lobby.OnRoomStartingEvent += OnRoomStarting;
+        NetworkClient.Lobby.OnRoomReadyEvent += OnRoomReady;
     }
 
     void onDestroy() {
@@ -48,7 +54,7 @@ public class Lobby : MonoBehaviour
 
         NetworkClient.Lobby.OnLobbyConnectedEvent -= OnLobbyConnected;
 
-        NetworkClient.Lobby.OnRoomStartingEvent -= OnRoomStarting;
+        NetworkClient.Lobby.OnRoomReadyEvent -= OnRoomReady;
     }
 
     public void OnConnect() {
@@ -125,10 +131,11 @@ public class Lobby : MonoBehaviour
         lobbyEntry.lobbyStatus.text = lobbyData.lobbyStatus;
         lobbyEntry.playerCount.text = lobbyData.players.Count + "/" + lobbyData.maxPlayers;
 
-        lobbyEntry.OnJoin = () => {
-            Debug.Log("Cliccato bottone join: " + lobbyId);
-            OnJoinLobby(lobbyId);
-        };
+        if (lobbyData.lobbyStatus == "Waiting") {
+            lobbyEntry.OnJoin = () => { OnJoinLobby(lobbyId); };
+        } else {
+            lobbyEntry.joinButton.SetActive(false);
+        }
     }
 
     public void OnNewLobby() {
@@ -166,6 +173,7 @@ public class Lobby : MonoBehaviour
         playerRegisterScreen.SetActive(false);
         lobbyScreen.SetActive(false);
         playerListScreen.SetActive(true);
+        startGameButton.SetActive(NetworkClient.Lobby.IsOwner);
         RefreshPlayerList();
     }
 
@@ -226,18 +234,24 @@ public class Lobby : MonoBehaviour
         playerEntry.playerName.text = playerData.playerName;
     }
 
-    private void OnRoomStarting(SWStartRoomEventData eventData) {
-        Debug.Log("Room is starting");
+    private void OnRoomReady(SWRoomReadyEventData eventData) {
         ConnectToRoom();
     }
 
     public void OnStartGame() {
         if (NetworkClient.Lobby.IsOwner) {
-            NetworkClient.Lobby.StartRoom((success, error) => {
+            lobbyData.lobbyStatus = "Playing";
+            NetworkClient.Lobby.ChangeRoomCustomData(lobbyData, (success, error) => {
                 if (success) {
-                    ConnectToRoom();
+                    NetworkClient.Lobby.StartRoom((success2, error2) => {
+                        if (success2) {
+                            ConnectToRoom();
+                        } else {
+                            Debug.Log("Error starting room: " + error2);
+                        }
+                    });
                 } else {
-                    Debug.Log("Error starting room: " + error);
+                    Debug.Log("Error changing room status: " + error);
                 }
             });
         }
@@ -248,6 +262,8 @@ public class Lobby : MonoBehaviour
             if (success) {
                 Debug.Log("Game started");
                 // go to game scene
+            } else {
+                Debug.Log("Error connecting to room");
             }
         });
     }

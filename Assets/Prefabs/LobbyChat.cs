@@ -7,6 +7,7 @@ using SWNetwork;
 
 [Serializable]
 public class MessageData {
+    public LobbyPlayer playerData;
     public string message;
 }
 
@@ -14,6 +15,8 @@ public class LobbyChat : MonoBehaviour
 {
     public InputField chatInputField;
     public GameObject chatContent;
+
+    public Text textPrefab;
 
     void Start() {
         NetworkClient.Lobby.OnRoomMessageEvent += OnRoomMessage;
@@ -26,9 +29,12 @@ public class LobbyChat : MonoBehaviour
     public void OnChatSend() {
         if (chatInputField.text != null && chatInputField.text.Length > 0) {
             MessageData messageData = new MessageData();
+            messageData.playerData = Lobby.getPlayerData();
             messageData.message = chatInputField.text;
             NetworkClient.Lobby.MessageRoom(messageData, (success, error) => {
-                if (!success) {
+                if (success) {
+                    displayMessage(messageData);
+                } else {
                     Debug.Log("Error sending lobby message: " + error);
                 }
             });
@@ -41,6 +47,8 @@ public class LobbyChat : MonoBehaviour
     }
 
     private void displayMessage(MessageData messageData) {
-        Debug.Log(messageData.message);
+        Text obj = Instantiate(textPrefab);
+        obj.transform.parent = chatContent.transform;
+        obj.text = messageData.playerData.playerName + " : " + messageData.message;
     }
 }

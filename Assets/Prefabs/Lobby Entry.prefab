@@ -142,6 +142,7 @@ MonoBehaviour:
   lobbyName: {fileID: 5585515436414140821}
   lobbyStatus: {fileID: 5585515436820214788}
   playerCount: {fileID: 5585515435568692776}
+  joinButton: {fileID: 5585515436346208509}
 --- !u!1 &5585515436044370831
 GameObject:
   m_ObjectHideFlags: 0
