@@ -153,7 +153,7 @@ fase 1:
             pat brennan : scegli effetto personaggio -> pesca una carta di fronte a un giocatore, o pesca normalmente
             pixie pete : cardstodraw++
             dutch will : se cardstodraw > 1 -> pesca 2 carte, ne scarta una, pesca una pepita, draw x (cardstodraw-2), else draw
-            evelyn shebang : clicca su pesca finche' non fa click sul personaggio e gioca (effect=bang, target=reachable) x ogni carta non pescata
+            evelyn shebang : clicca su pesca finche' non fa click sul personaggio e fa (effect=bang, target=reachable) x ogni carta non pescata
             tuco franziskaner : controlla carte equipaggiate, se non ce n'e' di blu cardstodraw+=2
         se miniera abbandonata -> pesca cardstodraw carte dagli scarti
         else -> draw x cardstodraw
@@ -176,7 +176,8 @@ fase 2:
             green:
                 equipaggia la carta tappata
             blue:
-                prendi_cubi(1) su carta a scelta
+                se armedanddangerous tra le espansioni:
+                    prendi_cubi(1) su carta a scelta
                 se type=equip -> equipaggia la carta su eqip_target (default=self)
                 se type=weapon -> per ogni carta -> se type=weapon, scarta questa carta
             orange:
@@ -310,7 +311,8 @@ funzione danno (attacker, target, danno):
         boots: draw x ogni danno
         bounty: (effect=draw, target=attacker) se bangcard
         luckycharm: pesca una pepita x ogni danno
-    attacker pesca una pepita x ogni danno
+    se goldrush tra le espansioni:
+        attacker pesca una pepita x ogni danno
 
 funzione paga_cubi n(default=cube_cost):
     se ncubi >= n -> ncubi -= n

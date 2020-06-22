@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class LobbyPlayer {
-    public string name;
-    public bool connected;
-    public bool alive;
+    public string playerName;
+    public string playerId;
 }
 
 [Serializable]
 public class LobbyData {
-    public string name;
-    public List<LobbyPlayer> players = new List<LobbyPlayer>();
+    public string lobbyName;
+    public string lobbyStatus;
+
+    public int maxPlayers;
+    public List<LobbyPlayer> players;
 }
